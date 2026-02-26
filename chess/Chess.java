@@ -1,3 +1,5 @@
+// Names: Tyler Bertrand and Kuthab Ibrahim
+
 package chess;
 
 import java.util.ArrayList;
@@ -35,7 +37,6 @@ public class Chess {
     } else if(move.contains("draw?")) {
       drawRequested = true;
     }
-
     int fileBefore = move.charAt(0) - 'a';
     int rankBefore = move.charAt(1) - '1';
     int fileAfter =  move.charAt(3) - 'a';
@@ -59,9 +60,8 @@ public class Chess {
       ReturnPlay illegalMove = new ReturnPlay();
       illegalMove.message = Message.ILLEGAL_MOVE;
       return illegalMove;
-    } else if("idk".equals(move)) {
-      //kuthab do this
     }
+
     board[rankAfter][fileAfter] = spotBefore;
     board[rankBefore][fileBefore] = null;
     ReturnPlay legalMove = new ReturnPlay();
