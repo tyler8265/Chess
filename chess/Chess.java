@@ -22,6 +22,7 @@ public class Chess {
 	 *         See the section "The Chess class" in the assignment description for details of
 	 *         the contents of the returned ReturnPlay instance.
 	 */
+
 	public static ReturnPlay play(String move) {
     boolean drawRequested = false;
     if(move == "resign") {
@@ -60,7 +61,7 @@ public class Chess {
       ReturnPlay illegalMove = new ReturnPlay();
       illegalMove.message = Message.ILLEGAL_MOVE;
       return illegalMove;
-    }
+    } else if()
 
     board[rankAfter][fileAfter] = spotBefore;
     board[rankBefore][fileBefore] = null;
@@ -126,5 +127,35 @@ public class Chess {
       board[blackPiece.pieceRank - 1][blackPiece.pieceFile.ordinal()] = blackPiece;
     }
     currentPlayer = Player.white;
+  }
+  public static boolean isInCheck(Player player) {
+    int [] kingPosition = getKingPosition(player);
+    int kingRank = kingPosition[0];
+    int kingFile = kingPosition[1];
+    for(int i = 0; i < 8; i++) {
+      for(int j = 0; j < 8; j++) {
+        ReturnPiece piece = board[i][j];// finish after isvalid is finished for all chess characters
+  
+        //if(player == Player.white && piece.pieceType.toString().endsWith("BP"))
+      }
+    }
+    return false;
+  }
+  public static int[] getKingPosition(Player player) {
+    int[] kingPosition = new int[2];
+    for(int i = 0; i < 8; i++) {
+      for(int j = 0; j < 8; j++) {
+        if(board[i][j] != null) {
+          if(player == Player.white && board[i][j].pieceType == ReturnPiece.PieceType.WK) {
+            kingPosition[0] = i;
+            kingPosition[1] = j;
+          } else if(player == Player.black && board[i][j].pieceType == ReturnPiece.PieceType.BK) {
+            kingPosition[0] = i;
+            kingPosition[1] = j;
+          }
+        }
+      }
+    }
+    return kingPosition;
   }
 }
