@@ -2,6 +2,7 @@ package chess;
 
 public class Queen implements Validation {
     public boolean isLegalMove(int fileBefore, int rankBefore, int fileAfter, int rankAfter) {
-      return false;
+        return new Rook().isLegalMove(fileBefore, rankBefore, fileAfter, rankAfter)
+            || new Bishop().isLegalMove(fileBefore, rankBefore, fileAfter, rankAfter);
     }
 }
